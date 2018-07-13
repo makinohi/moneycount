@@ -6,7 +6,7 @@ from numpy.random import *
 class MoneyImageGenerator:
 
     IMAGE_WIDTH = 800
-    IMAGE_HEIGHT = 600
+    IMAGE_HEIGHT = 800
     
     def __init__(self,money_image_directory_path, money_min_count=1, money_max_count=5):
 
@@ -51,8 +51,8 @@ class MoneyImageGenerator:
                         'kind':money_index,
                         'xmin':offset_x,
                         'ymin':offset_y,
-                        'xmax':money_image.shape[1],
-                        'ymax':money_image.shape[0]
+                        'xmax':money_image.shape[1]+offset_x,
+                        'ymax':money_image.shape[0]+offset_y,
                         })
                 offset_x = offset_x + money_image.shape[1] + 10
 
@@ -74,4 +74,4 @@ class MoneyImageGenerator:
 
 if __name__ == '__main__':
     generator = MoneyImageGenerator('./money_image/')
-    generator.Generate('./output/', 50)
+    generator.Generate('./output/', 200)
