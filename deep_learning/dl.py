@@ -71,6 +71,9 @@ def predict(model, img):
     colors = plt.cm.hsv(np.linspace(0, 1, 21)).tolist()
     plt.imshow(img / 255.)
     currentAxis = plt.gca()
+    
+    money_total = 0
+    money_num_list = [10, 100, 5]
 
     for i in range(top_conf.shape[0]):
         xmin = int(round(top_xmin[i] * img.shape[1]))
@@ -85,7 +88,9 @@ def predict(model, img):
         color = colors[label]
         currentAxis.add_patch(plt.Rectangle(*coords, fill=False, edgecolor=color, linewidth=2))
         currentAxis.text(xmin, ymin, display_txt, bbox={'facecolor':color, 'alpha':0.5})
-        
+
+        money_total = money_total + money_num_list[label - 1]
+    plt.title(f'Total:{money_total} yen')
     canvas = FigureCanvasAgg(currentAxis.figure)
     buf = io.BytesIO()
     plt.savefig(buf)
