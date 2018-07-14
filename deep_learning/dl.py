@@ -6,6 +6,8 @@ import io
 from keras.applications.imagenet_utils import preprocess_input
 from keras.backend.tensorflow_backend import set_session
 from keras.preprocessing import image
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.misc import imread
@@ -13,6 +15,8 @@ import tensorflow as tf
 
 from ssd_v2 import SSD300v2
 from ssd_utils import BBoxUtility
+
+
 
 voc_classes = ['10', '100', '5', 'Boat', 'Bottle',
             'Bus', 'Car', 'Cat', 'Chair', 'Cow', 'Diningtable',
