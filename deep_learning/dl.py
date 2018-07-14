@@ -42,6 +42,8 @@ def initialize(weight_file_path):
 def predict(model, img):
     inputs = []
 
+    plt.cla()
+
     img = image.img_to_array(img)
     img = np.asarray(img)
     inputs.append(img.copy())
