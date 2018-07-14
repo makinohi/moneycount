@@ -53,7 +53,7 @@ def predict(model, img):
     det_xmax = results[0][:, 4]
     det_ymax = results[0][:, 5]
 
-    top_indices = [i for i, conf in enumerate(det_conf) if conf >= 0.05]  #0.6
+    top_indices = [i for i, conf in enumerate(det_conf) if conf >= 0.6]  #0.6
 
     top_conf = det_conf[top_indices]
     top_label_indices = det_label[top_indices].tolist()
