@@ -1,14 +1,16 @@
 import os
+import io
+import matplotlib as mpl
+mpl.use('Agg')
+import matplotlib.pyplot as plt
 
 from matplotlib.backends.backend_agg import FigureCanvasAgg
-import io
+from matplotlib.figure import Figure
 
 from keras.applications.imagenet_utils import preprocess_input
 from keras.backend.tensorflow_backend import set_session
 from keras.preprocessing import image
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
+
 import numpy as np
 from scipy.misc import imread
 import tensorflow as tf
@@ -83,7 +85,7 @@ def predict(model, img):
         color = colors[label]
         currentAxis.add_patch(plt.Rectangle(*coords, fill=False, edgecolor=color, linewidth=2))
         currentAxis.text(xmin, ymin, display_txt, bbox={'facecolor':color, 'alpha':0.5})
-    
+        
     canvas = FigureCanvasAgg(currentAxis.figure)
     buf = io.BytesIO()
     plt.savefig(buf)
